@@ -5,18 +5,62 @@ module OnlineCourse
         prefix :api
         
         resources :course do
-            desc 'Return courses information'
-            get do
+            desc 'Return all courses information.'
+            get :all do
                 @courses = Course.all
                 present @courses, with: ::OnlineCourse::Entities::Course
             end
-        end
 
-        desc 'Return a specific course'
-        route_param :id do
-            get do
-            course = Course.find(params[:id])
-            present course
+            desc 'Return specific course information.'
+            route_param :id do
+                get do
+                @course = Course.find(params[:id])
+                present @course, with: ::OnlineCourse::Entities::Course
+                end
+            end
+
+            desc 'Create a course.'
+            params do
+                requires :name, type: String, desc: 'Course name'
+                requires :user_id, type: Integer, desc: 'User that created the course'
+                requires :theme, type: String, desc: 'Course theme'
+                requires :course_type, type: String, desc: "Course type"
+                requires :price, type: Float, desc: 'Course price'
+                requires :currency, type: String, desc: "Currency for the price of the course"
+                requires :on_shelf, type: Boolean, desc: "If the course is currently available"
+                requires :url, type: String, desc: "Course URL"
+                requires :description, type: String, desc: "Course description"
+                requires :expire_time, type: Time, desc: "Course expire time"
+            end
+            post do
+                Course.create!({
+                    name: params[:name],
+                    user_id: params[:user_id],
+                    theme: params[:theme],
+                    course_type: params[:course_type],
+                    price: params[:price],
+                    currency: params[:currency],
+                    on_shelf: params[:on_shelf],
+                    url: params[:url],
+                    description: params[:description],
+                    expire_time: params[:expire_time]
+                })
+            end
+
+            desc 'Update a course.'
+            params do
+                requires :id, type: String, desc: 'Course id'
+            end
+            put do
+                return 'update course'
+            end
+
+            desc 'Delete a course.'
+            params do
+                requires :id, type: String, desc: 'Course id'
+            end
+            delete do
+                return 'delete course'
             end
         end
     end
