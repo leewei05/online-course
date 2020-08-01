@@ -1,24 +1,16 @@
-# README
+# online-course
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`online-course` is a project that simulates an e-commerce that sales online courses, which is written
+in Ruby on Rails.
 
-Things you may want to cover:
+## Run
 
-* Ruby version
+```
+rails server
+```
 
-* System dependencies
+## Features
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+GET /api/v1/url/
+```
