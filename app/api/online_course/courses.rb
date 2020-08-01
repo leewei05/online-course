@@ -4,9 +4,20 @@ module OnlineCourse
         format :json
         prefix :api
         
-        desc 'Return users information'
-        get :users do
-            return 'users info'
+        resources :course do
+            desc 'Return courses information'
+            get do
+                @courses = Course.all
+                present @courses, with: ::OnlineCourse::Entities::Course
+            end
+        end
+
+        desc 'Return a specific course'
+        route_param :id do
+            get do
+            course = Course.find(params[:id])
+            present course
+            end
         end
     end
 end
