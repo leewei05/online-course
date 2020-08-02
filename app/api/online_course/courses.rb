@@ -66,11 +66,10 @@ module OnlineCourse
             end
 
             desc 'Delete a course.'
-            params do
-                requires :id, type: String, desc: 'Course id'
-            end
-            delete do
-                return 'delete course'
+            route_param :id do
+                delete do
+                    Course.find(params[:id]).destroy
+                end
             end
         end
     end
