@@ -33,23 +33,17 @@ module OnlineCourse
                 requires :expire_time, type: Time, desc: "Course expire time"
             end
             post do
-                Course.create!({
-                    name: params[:name],
-                    user_id: params[:user_id],
-                    theme: params[:theme],
-                    course_type: params[:course_type],
-                    price: params[:price],
-                    currency: params[:currency],
-                    on_shelf: params[:on_shelf],
-                    url: params[:url],
-                    description: params[:description],
-                    expire_time: params[:expire_time]
-                })
+                declared_params = declared params, include_missing: false
+                Course.create!(declared_params)
             end
 
             desc 'Update a course.'
             route_param :id do
+                # params do
+                # end
                 put do
+                    # Check if object exists
+                    # at_least_one_of
                     Course.find(params[:id]).update({ 
                         name: params[:name],
                         user_id: params[:user_id],
