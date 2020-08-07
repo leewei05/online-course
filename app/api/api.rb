@@ -3,4 +3,5 @@ class API < Grape::API
     format :json
     
     mount OnlineCourse::Courses
+    mount OnlineCourse::Histories
 end

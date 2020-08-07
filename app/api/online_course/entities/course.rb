@@ -1,6 +1,7 @@
 module OnlineCourse
     module Entities
      class Course < Grape::Entity
+      expose :id
       expose :name
       expose :user_id
       expose :theme
