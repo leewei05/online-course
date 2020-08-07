@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_105846) do
+ActiveRecord::Schema.define(version: 2020_08_07_120953) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 2020_08_02_105846) do
   end
 
   create_table "histories", force: :cascade do |t|
-    t.integer "buyer_id"
+    t.integer "user_id"
     t.integer "course_id"
-    t.date "purchase_date"
+    t.date "purchase_at"
     t.float "price"
     t.string "currency"
     t.datetime "created_at", null: false
