@@ -33,6 +33,11 @@ gem 'grape'
 gem 'grape-entity'
 gem 'grape_on_rails_routes'
 gem 'rspec_api_documentation'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin_rollincode', '~> 1.0'
+gem "devise"
+gem 'cancancan'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
