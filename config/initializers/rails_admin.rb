@@ -39,4 +39,14 @@ RailsAdmin.config do |config|
       field :expire_time
     end
   end
+
+  config.model 'User' do
+    list do
+      field :name
+      field :admin 
+      field :email
+      field :created_at
+      field :updated_at
+    end
+  end
 end
