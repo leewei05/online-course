@@ -6,7 +6,7 @@ module OnlineCourse
         
         resources :course do
             desc 'Return all courses information.'
-            get :all do
+            get do
                 @courses = Course.all
                 present @courses, with: ::OnlineCourse::Entities::Course
             end
