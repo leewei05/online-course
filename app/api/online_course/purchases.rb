@@ -12,9 +12,19 @@ module OnlineCourse
                 end
                 post do
                     @course = Course.find(params[:id])
+                    expire = @course.expire_time
+
                     if !@course.on_shelf
                         error! 'This course is not available to purchase!', 400
                     end
+
+                    History.where(user_id: params[:user_id], course_id: params[:id]).each do |t|
+                        expire_date = t.purchase_at + expire.days
+                        if expire_date > t.purchase_at
+                            error! 'You have already purchased this course, and it is available to use!', 400
+                        end
+                    end
+                    
                     History.create!({
                         user_id: params[:user_id],
                         course_id: @course.id,
