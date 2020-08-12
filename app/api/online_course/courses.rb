@@ -4,7 +4,7 @@ module OnlineCourse
         format :json
         prefix :api
         
-        resources :course do
+        resources :courses do
             desc 'Return all courses information.'
             get do
                 @courses = Course.all
@@ -64,6 +64,34 @@ module OnlineCourse
                 delete do
                     Course.find(params[:id]).destroy
                 end
+            end
+
+            desc 'Create a course purchase.'
+            params do
+                requires :user_id, type: Integer, desc: 'User id'
+            end
+            post ':course_id/purchases' do
+                @course = Course.find(params[:course_id])
+                expire = @course.expire_time
+
+                if !@course.on_shelf
+                    error! 'This course is not available to purchase!', 400
+                end
+
+                History.where(user_id: params[:user_id], course_id: params[:course_id]).each do |t|
+                    expire_date = t.purchase_at + expire.days
+                    if expire_date > t.purchase_at
+                        error! 'You have already purchased this course, and it is available to use!', 400
+                    end
+                end
+                
+                History.create!({
+                    user_id: params[:user_id],
+                    course_id: @course.id,
+                    purchase_at: Time.now.strftime("%Y-%m-%d"),
+                    price: @course.price,
+                    currency: @course.currency
+                })
             end
         end
     end

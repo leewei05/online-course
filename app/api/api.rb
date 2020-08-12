@@ -5,5 +5,4 @@ class API < Grape::API
 
     mount OnlineCourse::Courses
     mount OnlineCourse::Histories
-    mount OnlineCourse::Purchases
 end
