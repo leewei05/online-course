@@ -90,7 +90,9 @@ module OnlineCourse
                     course_id: @course.id,
                     purchase_at: Time.now.strftime("%Y-%m-%d"),
                     price: @course.price,
-                    currency: @course.currency
+                    currency: @course.currency,
+                    created_at: Time.now.utc,
+                    updated_at: Time.now.utc,
                 })
             end
         end

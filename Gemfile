@@ -45,6 +45,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   
   gem "factory_bot_rails"
+  gem "timecop"
 end
 
 group :development do
