@@ -4,7 +4,6 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
-
   ## == CancanCan ==
   config.authorize_with :cancancan
 
@@ -43,7 +42,7 @@ RailsAdmin.config do |config|
   config.model 'User' do
     list do
       field :name
-      field :admin 
+      field :admin
       field :email
       field :created_at
       field :updated_at
