@@ -6,13 +6,14 @@ module OnlineCourse
 
         resources :history do
             desc 'Return all histories for specific user.'
-            route_param :id do
-                get do
-                # @user_id = params[:buyer_id]
-                # @history = History.find(@user_id)
-                @history = History.all()
-                present @history, with: ::OnlineCourse::Entities::History
-                end
+            params do
+                requires :user_id, type:Integer, desc: 'User ID'
+            end
+            post do
+            status 200
+
+            @histories = History.includes(:course).where("user_id =?", params[:user_id])
+            present @histories, with: ::OnlineCourse::Entities::History
             end
         end
     end

@@ -2,7 +2,6 @@ module OnlineCourse
     module Entities
         class History < Grape::Entity
             expose :user_id
-            expose :course_id
             expose :purchase_at
             expose :price
             expose :currency
