@@ -18,5 +18,5 @@ POST   |  /api/:version/courses(.:format)                       |  v1  |  Create
 PUT    |  /api/:version/courses/:id(.:format)                   |  v1  |  Update a course.                       
 DELETE |  /api/:version/courses/:id(.:format)                   |  v1  |  Delete a course.                       
 POST   |  /api/:version/courses/:course_id/purchases(.:format)  |  v1  |  Create a course purchase.              
-GET    |  /api/:version/history/:id(.:format)                   |  v1  |  Return all histories for specific user.
+POST   |  /api/:version/histories/:id(.:format)                 |  v1  |  Return all histories for specific user.
 ```

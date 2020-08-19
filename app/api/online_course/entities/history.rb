@@ -3,6 +3,7 @@ module OnlineCourse
         class History < Grape::Entity
             expose :user_id
             expose :purchase_at
+            expose :expired_at
             expose :price
             expose :currency
             expose :course, with: OnlineCourse::Entities::Course
