@@ -1,0 +1,5 @@
+class HistoryAddColumnExpireTime < ActiveRecord::Migration[5.2]
+  def change
+    add_column :histories, :expired_at, :date
+  end
+end

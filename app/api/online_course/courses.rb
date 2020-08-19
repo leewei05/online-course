@@ -39,11 +39,7 @@ module OnlineCourse
 
             desc 'Update a course.'
             route_param :id do
-                # params do
-                # end
                 put do
-                    # Check if object exists
-                    # at_least_one_of
                     Course.find(params[:id]).update({ 
                         name: params[:name],
                         user_id: params[:user_id],
@@ -79,8 +75,7 @@ module OnlineCourse
                 end
 
                 History.where(user_id: params[:user_id], course_id: params[:course_id]).each do |t|
-                    expire_date = t.purchase_at + expire.days
-                    if expire_date > t.purchase_at
+                    if t.expired_at > t.purchase_at
                         error! 'You have already purchased this course, and it is available to use!', 400
                     end
                 end
@@ -88,7 +83,8 @@ module OnlineCourse
                 History.create!({
                     user_id: params[:user_id],
                     course_id: @course.id,
-                    purchase_at: Time.now.strftime("%Y-%m-%d"),
+                    expired_at: Time.now + expire.days,
+                    purchase_at: Time.now,
                     price: @course.price,
                     currency: @course.currency,
                     created_at: Time.now.utc,
