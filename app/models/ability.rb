@@ -13,7 +13,6 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      # {error: 'You are not Admin bro!'}
     end
   end
 end
