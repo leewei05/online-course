@@ -10,6 +10,7 @@ COPY Gemfile.lock /usr/src/app/
 RUN bundle install
 ENV RAILS_ENV production
 ENV SECRET_KEY_BASE production_test_key
+ENV RUBYOPT '-W:no-deprecated -W:no-experimental'
 
 COPY . /usr/src/app
 

@@ -1,7 +1,7 @@
-class API < Grape::API
+class Base < Grape::API
+    version 'v1'
     prefix 'api'
     format :json
-    default_error_status 400
 
     mount OnlineCourse::Courses
     mount OnlineCourse::Histories
