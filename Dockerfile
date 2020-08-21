@@ -9,7 +9,7 @@ COPY Gemfile.lock /usr/src/app/
 
 RUN bundle install
 ENV RAILS_ENV production
-ENV SECRET_KEY_BASE 0decba245f367658bfd7b504a88854660619cef5a0a128e8cf1bc7ab0f54eb90493e026a2deb7f453ae5f606ef7a438b711d1be845088ef5a271a976bf8e3798
+ENV SECRET_KEY_BASE SECRET_KEY_BASE
 ENV RUBYOPT '-W:no-deprecated -W:no-experimental'
 ENV RAILS_SERVE_STATIC_FILES true
 

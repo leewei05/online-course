@@ -9,6 +9,12 @@ in Ruby on Rails.
 git clone git@github.com:leewei05/online-course.git
 cd online-course
 
+# Remember to add your production key base before deploying
+# config/secrets.yml
+
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %> 
+
 docker build . -t course
 docker run --rm -p 3000:3000 course
 ```
