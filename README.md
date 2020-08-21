@@ -3,10 +3,13 @@
 `online-course` is a project that simulates a platform that sales online courses, which is written
 in Ruby on Rails.
 
-## Run
+## Build & Run app
 
 ```
-rails s
+git clone git@github.com:leewei05/online-course.git
+cd online-course
+
+docker run --rm -p 3000:3000 course
 ```
 
 ## Features
