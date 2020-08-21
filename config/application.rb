@@ -10,6 +10,8 @@ module OnlineCourse
     config.load_defaults 5.0
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
    
     Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
   end
