@@ -9,6 +9,7 @@ in Ruby on Rails.
 git clone git@github.com:leewei05/online-course.git
 cd online-course
 
+docker build . -t course
 docker run --rm -p 3000:3000 course
 ```
 
